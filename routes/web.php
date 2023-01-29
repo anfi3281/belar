@@ -33,6 +33,10 @@ Route::get('testing', function () {
     return "Ini Testing";
 });
 
+Route::get('halo', function () {
+    return view('halo');
+});
+
 Route::get('pegawai', 'App\Http\Controllers\PegawaiController@index');
 Route::get('dosen', 'App\Http\Controllers\DosenController@index');
 Route::get('biodata', 'App\Http\Controllers\BiodataController@index');
