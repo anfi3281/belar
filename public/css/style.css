@@ -1,0 +1,23 @@
+body{
+    background-color: yellow;
+    color:white;
+    text-align: center;
+}
+
+.container{
+    background-color: black;
+    width: max-content;
+    margin: auto;
+    margin-top: 150px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1{
+    padding-bottom: 50px;
+    font-size: 20px;
+
+}
+table tr th{
+    width: 100px;
+}
