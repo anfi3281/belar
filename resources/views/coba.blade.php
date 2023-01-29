@@ -1,1 +1,0 @@
-<h1 style="text-align:center">Halo, selamat datang di coba.blade.php</h1>
