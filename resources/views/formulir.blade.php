@@ -12,8 +12,8 @@
 <body>
     <h1>Formulir Pendaftaran</h1>
     <div class="container">
-        <form action="/public/input/proses" method="POST">
-            <input type="hidden" name="_token" value="<?php echo csrf_token()?>">
+        <form action="input/proses" method="POST">
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <table>
                 <tr>
                     <td>Nama : </td>
@@ -23,7 +23,9 @@
                     <td>Kelas : </td>
                     <td><input type="text" name="kelas"></td>
                 </tr>
-                <tr><td><input type="submit" name="submit" value="submit"></td></tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="submit"></td>
+                </tr>
             </table>
         </form>
     </div>

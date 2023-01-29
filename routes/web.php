@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('halo', function () {
+Route::get('/halo', function () {
     return 'Halo teman-teman';
 });
 
@@ -48,4 +48,7 @@ Route::get('biodata', 'App\Http\Controllers\BiodataController@index');
 Route::get('/name/{nama}', 'App\Http\Controllers\NameController@index');
 Route::get('/biodata2/{kelas}', 'App\Http\Controllers\Biodata2Controller@index');
 Route::get('/input', 'App\Http\Controllers\InputController@formulir');
-Route::post('/input/proses', 'App\Http\Controllers\InputController@proses');
+Route::post('input/proses', 'App\Http\Controllers\InputController@proses');
+
+Route::get('inputdata', 'App\Http\Controllers\InputDataController@form');
+Route::post('inputdata/proses', 'App\Http\Controllers\InputDataController@proses');
