@@ -17,3 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('blog', '\App\Http\Controllers\BlogController@home');
+Route::get('/blog/tentang', '\App\Http\Controllers\BlogController@tentang');
+Route::get('/blog/kontak', '\App\Http\Controllers\BlogController@kontak');
