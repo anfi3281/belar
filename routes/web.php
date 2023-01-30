@@ -16,25 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('halo', function () {
-    return 'Halo teman-teman';
-});
-
-Route::get('blog', function () {
-    return view('blog');
-});
-
-Route::get('coba', function () {
-    return view('coba');
-});
-
-Route::get('testing', function () {
-    return "Ini Testing";
-});
-
-Route::get('pegawai', 'App\Http\Controllers\PegawaiController@index');
-Route::get('dosen', 'App\Http\Controllers\DosenController@index');
-Route::get('biodata', 'App\Http\Controllers\BiodataController@index');
-Route::get('/name/{nama}', 'App\Http\Controllers\NameController@index');
-// Route::get('/biodata2/{kelas}', 'App\Http\Controllers\Biodata2Controller@index');
