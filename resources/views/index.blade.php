@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="{{ URL::asset('frontend/libraries/bootstrap/css/
-            bootstrap.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('frontend/styles/main.css') }}" />
+    <link rel="stylesheet" href="frontend/libraries/bootstrap/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="frontend/styles/main.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,400,700&&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" rel="stylesheet" />
 </head>
@@ -22,7 +21,7 @@
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
             <a class="navbar-brand" href="#">
-                <img src="{{ URL::asset('frontend/images/logo.png') }}" alt="" />
+                <img src="frontend/images/logo.png" alt="" />
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navb">
@@ -123,7 +122,7 @@
                 <div class="section-popular-travel row justify-content-center">
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url({{ URL::asset('frontend/images/travel-1.jpg') }});">
+                            style="background-image: url(frontend/images/travel-1.jpg);">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">DERATAN, BALI</div>
                             <div class="travel-button mt-auto">
@@ -135,7 +134,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url({{ URL::asset('frontend/images/travel-2.jpg') }});">
+                            style="background-image: url(frontend/images/travel-2.jpg);">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">BROMO, MALANG</div>
                             <div class="travel-button mt-auto">
@@ -147,7 +146,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url({{ URL::asset('frontend/images/travel-3.jpg') }});">
+                            style="background-image: url(frontend/images/travel-3.jpg);">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">NUSA PENIDA</div>
                             <div class="travel-button mt-auto">
@@ -159,7 +158,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url({{ URL::asset('frontend/images/travel-4.jpg') }});">
+                            style="background-image: url(frontend/images/travel-4.jpg);">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">DUBAI</div>
                             <div class="travel-button mt-auto">
@@ -184,7 +183,7 @@
                         </p>
                     </div>
                     <div class="col-md-8 text-center">
-                        <img src="{{ URL::asset('frontend/images/partner.png') }}" class="img-patner" />
+                        <img src="frontend/images/partner.png" class="img-patner" />
                     </div>
                 </div>
             </div>
@@ -209,7 +208,7 @@
                     <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="card card-testimonial text-center">
                             <div class="testimonial-content">
-                                <img src="{{ URL::asset('frontend/images/avatar-1.png') }}" alt=""
+                                <img src="frontend/images/avatar-1.png" alt=""
                                     class="mb-4 rounded-circle" />
                                 <h3 class="mb-4">Angga Risky</h3>
                                 <p class="testimonials">
@@ -224,7 +223,7 @@
                     <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="card card-testimonial text-center">
                             <div class="testimonial-content">
-                                <img src="{{ URL::asset('frontend/images/avatar-2.png') }}" alt=""
+                                <img src="frontend/images/avatar-2.png" alt=""
                                     class="mb-4 rounded-circle" />
                                 <h3 class="mb-4">Shayna</h3>
                                 <p class="testimonials">
@@ -239,7 +238,7 @@
                     <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="card card-testimonial text-center">
                             <div class="testimonial-content mb-auto">
-                                <img src="{{ URL::asset('frontend/images/avatar-3.png') }}" alt=""
+                                <img src="frontend/images/avatar-3.png" alt=""
                                     class="mb-4 rounded-circle" />
                                 <h3 class="mb-4">Shabrina</h3>
                                 <p class="testimonials">
@@ -328,9 +327,9 @@
             </div>
         </div>
     </footer>
-    <script src="{{ URL::asset('frontend/libraries/retina/retina.js') }}"></script>
-    <script src="{{ URL::asset('frontend/libraries/jquery/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ URL::asset('frontend/libraries/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="frontend/libraries/retina/retina.js"></script>
+    <script src="frontend/libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>

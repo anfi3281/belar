@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('wisata', 'WisataController@index');
+Route::get('details', 'WisataController@details');
+Route::get('checkout', 'WisataController@checkout');
+Route::get('success', 'WisataController@success');
