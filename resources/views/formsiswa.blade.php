@@ -39,7 +39,7 @@
                             </select></td>
                     </tr>
                 </table>
-                <input type="submit" name="proses" value="Proses">
+                <input type="submit" name="proses" value="Proses" class="tombol">
             </form>
         </div>
         <div class="subcontainer2">
