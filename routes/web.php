@@ -25,3 +25,4 @@ Route::get('blog', 'BlogController@index');
 Route::get('/blog/tentang', 'BlogController@tentang');
 Route::get('/blog/kontak', 'BlogController@kontak');
 Route::get('pegawai', 'PegawaiController@index');
+Route::get('/nama/{name}', 'NameController@index');
