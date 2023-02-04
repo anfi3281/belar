@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('nyoba', 'NyobaController@index');
+Route::get('pd', 'PassingDataController@index');
+Route::get('rd', 'RequestDataController@index');
+Route::post('/rd/submit', 'RequestDataController@submit');
+Route::get('blog', 'BlogController@index');
+Route::get('/blog/tentang', 'BlogController@tentang');
+Route::get('/blog/kontak', 'BlogController@kontak');
