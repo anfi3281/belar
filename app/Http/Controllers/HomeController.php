@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function home(){
-        return view('home');
-        
+        $auth = DB::table('SYSBPS_AUTH')->get();
+        return view('home', ['login' => $auth]);
+
     }
 
     public function login(Request $req){
