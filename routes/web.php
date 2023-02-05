@@ -23,3 +23,4 @@ Route::post('login', 'HomeController@login');
 
 Route::get('/pin', 'HomeController@pin');
 Route::post('/cekpin/{sesi}', 'HomeController@cekpin');
+Route::get('/home/{sesi}/{sesi2}', 'HomeController@core');

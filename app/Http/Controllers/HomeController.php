@@ -30,6 +30,11 @@ class HomeController extends Controller
         return view('pin');
     }
 
+    public function core($sesi1, $sesi2){
+        $login = DB::table('SYSBPS_LOGIN')->get();
+            return view('home', ['login' => $login]);
+    }
+
     public function cekpin($sesi, Request $req){
         $cekpin = $req->input('pn');
         $pin = DB::table('SYSBPS_LOGIN')->get();
