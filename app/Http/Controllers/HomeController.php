@@ -7,17 +7,33 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function home(){
+    public function home($sesi){
         $auth = DB::table('SYSBPS_AUTH')->get();
-        return view('home', ['login' => $auth]);
+        return view('pin', ['login' => $auth, 'sesi' => $sesi]);
+    }
 
+    public function awal(){
+        return redirect('/');
     }
 
     public function login(Request $req){
         $username = $req->input('ue');
         $password = $req->input('pd');
+        $capt = $req->input('na');
 
         $login = DB::table('SYSBPS_LOGIN')->get();
-        return view('login', ['login' => $login, 'username' => $username, 'password' => $password]);
+        $captcha = DB::table('SYSBPS_CAPTCHA')->get();
+        return view('login', ['login' => $login, 'username' => $username, 'password' => $password, 'captcha' => $captcha, 'capt' => $capt]);
+    }
+
+    public function pin(){
+        return view('pin');
+    }
+
+    public function cekpin($sesi, Request $req){
+        $cekpin = $req->input('pn');
+        $pin = DB::table('SYSBPS_LOGIN')->get();
+        $auth = DB::table('SYSBPS_AUTH')->get();
+        return view('cekpin', ['sesi' => $sesi, 'pin' => $pin, 'auth' => $auth , 'cekpin' => $cekpin]);
     }
 }

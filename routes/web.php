@@ -17,5 +17,9 @@ Route::get('/', function() {
     return view('index');
 });
 
-Route::get('home', 'HomeController@home');
+Route::get('home', 'HomeController@awal');
+Route::get('/home/{sesi}', 'HomeController@home');
 Route::post('login', 'HomeController@login');
+
+Route::get('/pin', 'HomeController@pin');
+Route::post('/cekpin/{sesi}', 'HomeController@cekpin');

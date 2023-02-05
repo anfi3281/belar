@@ -5,7 +5,6 @@
     @if (isset($a->auth))
         @php
             $host = mysqli_connect('localhost', 'root', '23122002', 'SYSBPS');
-            mysqli_query($host, 'TRUNCATE `SYSBPS_AUTH`');
             $masuk = 1;
         @endphp
     @else
