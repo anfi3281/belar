@@ -1,5 +1,5 @@
 @foreach ($pin as $kode)
-    @if ($kode->kesempatan <= 0 || $kode->kesempatan > 3)
+    @if ($kode->kesempatan < 1 && $kode->kesempatan > 3)
         @php
             foreach ($auth as $log) {
                 $host = mysqli_connect('localhost', 'root', '23122002', 'SYSBPS');
@@ -15,8 +15,8 @@
                 @php
                     $nama = $aut->username;
                     $kode2 = '';
-                    for ($i = 0; $i < 10; $i++) {
-                        $kode2 .= rand(0, 9);
+                    for ($i = 0; $i < 9; $i++) {
+                        $kode2 .= rand(1, 9);
                     }
                     $host = mysqli_connect('localhost', 'root', '23122002', 'SYSBPS');
                     mysqli_query($host, 'UPDATE `SYSBPS_LOGIN` SET `auth` = ' . $kode2 . '');

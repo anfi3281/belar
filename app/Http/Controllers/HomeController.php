@@ -32,7 +32,8 @@ class HomeController extends Controller
 
     public function core($sesi1, $sesi2){
         $login = DB::table('SYSBPS_LOGIN')->get();
-            return view('home', ['login' => $login]);
+        $auth = DB::table('SYSBPS_AUTH')->get();
+            return view('home', ['login' => $login, 'auth' => $auth , 'sesi1' => $sesi1, 'sesi2' => $sesi2]);
     }
 
     public function cekpin($sesi, Request $req){

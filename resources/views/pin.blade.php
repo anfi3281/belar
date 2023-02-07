@@ -1,8 +1,10 @@
 @php
     $masuk = 0;
+    $subsesi = '';
     foreach ($login as $log) {
         if ($log->auth == $sesi) {
             $masuk = 1;
+            $subsesi = $sesi;
         }
     }
 @endphp
@@ -61,7 +63,7 @@
 
     <body>
         <div class="container">
-            <form action="/cekpin/<?php echo $log->auth;?> " method="POST">
+            <form action="/cekpin/<?php echo $subsesi; ?> " method="POST">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <a>Masukkan Pin Anda</a><input type="password" style="width: 80px; text-align:center;" maxlength="6"
                     name="pn"><br><br>
