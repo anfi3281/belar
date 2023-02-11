@@ -27,3 +27,9 @@ Route::get('/blog/kontak', 'BlogController@kontak');
 Route::get('pegawai', 'PegawaiController@index');
 Route::get('/nama/{name}', 'NameController@index');
 Route::get('file', 'FileController@index');
+
+Route::get('return', function(){
+    return view('return');
+});
+Route::get('control', 'ControlController@index');
+Route::get('/control/{nama}', 'ControlController@control');
