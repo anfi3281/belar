@@ -35,3 +35,4 @@ Route::get('control', 'ControlController@index');
 Route::get('/control/{nama}', 'ControlController@control');
 Route::get('buku', 'bukuController@index');
 Route::post('/buku/cek', 'bukuController@cek');
+Route::get('datasiswa', 'DatasiswaController@index');
