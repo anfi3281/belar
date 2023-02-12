@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <h1>Employee Data</h1><br>
+    <h1>Insert Employee Data</h1>
+    <a href="/pegawai">Kembali</a>
+    <br><br>
     <form action="/pegawai/store" method="post">
         {{ csrf_field() }}
         Nama : <input type="text" name="nama" required><br><br>
