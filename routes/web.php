@@ -36,3 +36,5 @@ Route::get('/control/{nama}', 'ControlController@control');
 Route::get('buku', 'bukuController@index');
 Route::post('/buku/cek', 'bukuController@cek');
 Route::get('datasiswa', 'DatasiswaController@index');
+Route::get('/datapegawai/tambah', 'DataPegawaiController@tambah');
+Route::post('/datapegawai/store', 'DataPegawaiController@simpan');
