@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
-    public function tambah(){
+    dpublic function tambah(){
         return view('tambah');
     }
 
