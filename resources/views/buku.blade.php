@@ -12,13 +12,12 @@
 
 <body>
     <h1>Buku</h1>
-    <br><br>
     <form action="kelola" method="post">
-        Judul : <input type="text"><br><br>
-        Penerbit : <input type="text"><br><br>
+        Judul : <input type="text"><br>
+        Penerbit : <input type="text"><br>
         Pengarang : <input type="text"><br><br>
         <input type="submit" name="tambah" value="tambah">
-        <input type="submit" name="edit" value="edit"><br><br><br>
+        <input type="submit" name="edit" value="edit"><br>
         <table border="1">
             <tr>
                 <th>No</th>
@@ -44,7 +43,6 @@
             @endforeach
         </table>
     </form>
-    <br><br>
     Halaman Sekarang : {{ $data->currentPage() }} <br>
     Total Halaman : {{ $data->total() }} <br>
     Jumlah data per halaman : {{ $data->perPage() }} <br>
