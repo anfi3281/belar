@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('buku', 'BukuController@index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
