@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('buku', 'BukuController@index');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/buku/edit/{id}', 'BukuController@update');
+Route::get('/buku/hapus/{id}', 'BukuController@hapus');
+Route::post('/buku/kelola', 'BukuController@kelola');
