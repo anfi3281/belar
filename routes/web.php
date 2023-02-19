@@ -19,7 +19,3 @@ Route::get('/', function () {
 
 Route::post('/hasil', "TokoController@hasil");
 Route::get('/input', "TokoController@input");
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
