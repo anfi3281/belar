@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('coba', 'CobaController@index');
+Route::post('/cek', 'CobaController@kelola');
+Route::post('/coba/cari', 'CobaController@cari');
+Route::get('/coba/edit/{urutan}', 'CobaController@edit');
+Route::get('/coba/hapus/{urutan}', 'CobaController@hapus');
