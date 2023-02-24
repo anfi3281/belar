@@ -13,10 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::update('footnote', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->increments('id');
+            $table->string('penulis_1');
+            $table->string('penulis_2');
+            $table->string('penulis_3');
+            $table->longText('judul');
+            $table->longText('sumber');
+            $table->integer('volume');
+            $table->integer('nomor');
+            $table->integer('tahun');
+            $table->integer('halaman_awal');
+            $table->integer('halaman_akhir');
 
         });
     }
