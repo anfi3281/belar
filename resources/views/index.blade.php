@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RandiFootnote</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        tr * {
+            font-size: 10pt;
+            font-family: 'Times New Roman';
+        }
+    </style>
 </head>
 
 <body class="bg-primary">
@@ -15,7 +21,7 @@
             <div class="col-lg-4 mb-2">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center">Kelola Footnote</h3>
+                        <h4 class="text-center">Kelola Footnote</h4>
                         <form action="/kelola" method="POST" >
                             {{ csrf_field() }}
                             <div class="mt-4 form-group">
@@ -115,8 +121,8 @@
             <div class="col-lg-8 mb-3" >
                 <div class="card" style="height: 639px;">
                     <div class="card-body">
-                        <h3 class="text-center mb-4">Daftar Footnote</h3>
-                        <table class="table table-striped">
+                        <h4 class="text-center mb-3">Daftar Footnote</h4>
+                        <table class="table table-striped" >
                             <tr>
                                 <th style="width:35px;">No</th>
                                 <th>Footnote</th>
