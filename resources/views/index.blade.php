@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RandiFootnote</title>
+    <title>Randi Footnote</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <style>
         tr * {
@@ -16,10 +16,10 @@
 </head>
 
 <body class="bg-primary">
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-top: 3px;">
         <div class="row mt-2">
             <div class="col-lg-4 mb-2">
-                <div class="card">
+                <div class="card " style="height: 636px;">
                     <div class="card-body">
                         <h4 class="text-center">Kelola Footnote</h4>
                         <form action="/kelola" method="POST" >
@@ -83,7 +83,7 @@
                             </div>
                             <div class="form-group  mt-3">
                                 <label for="judul">Judul</label> <br>
-                                <textarea name="judul" class="form-control" id="" cols="30" rows="2" placeholder="Tuliskan Judul"></textarea>
+                                <textarea name="judul" class="form-control"style="font-size : 11px;"  id="" cols="30" rows="3" placeholder="Tuliskan Judul"></textarea>
                             </div>
                             <div class="mt-3 form-group">
                                 <label for="sumber">Sumber : </label>
@@ -119,7 +119,7 @@
                 </div>
             </div>
             <div class="col-lg-8 mb-3" >
-                <div class="card" style="height: 639px;">
+                <div class="card" style="height: 636px;">
                     <div class="card-body">
                         <h4 class="text-center mb-3">Daftar Footnote</h4>
                         <table class="table table-striped" >
