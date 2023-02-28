@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('tahun');
             $table->integer('halaman_awal');
             $table->integer('halaman_akhir');
+            $table->integer('jumlah_halaman');
 
         });
     }
