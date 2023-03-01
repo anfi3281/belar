@@ -51,6 +51,7 @@
                                 <input type="text" class="form-control-sm" name="nourut"
                                     style="margin-right: 11px;width: 50px;" placeholder="No"
                                     value="{{ $nomor }}">
+
                                 {{-- Switch --}}
                                 @switch($jenis)
                                     @case(1)
@@ -192,7 +193,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <input type="submit" name="input" value="Input" class="w-25 btn btn-primary">
+
+                        <input type="submit" name="input" value="Input" class="w-25 btn btn-primary"
+                            style="margin-left:20px">
                         <input type="submit" name="edit" value="Edit" class="w-25 btn btn-danger"
                             style="margin-left:20px">
                     </div>
@@ -210,7 +213,21 @@
         <div class="col-lg-8 mb-3">
             <div class="card" style="height: 636px;">
                 <div class="card-body">
-                    <h4 class="text-center mb-3">Daftar Footnote</h4>
+                    <table border="1">
+                        <tr>
+                            <td>
+                                <form action="/kelola">
+                                    <input type="submit" name="rapi" value="Rapihkan"
+                                        class="w-100 btn btn-primary">
+                                </form>
+                            </td>
+                            <td>
+                                <a style="text-align: center;">Daftar Footnote</a>
+                            </td>
+                        </tr>
+
+
+                    </table>
                     <table class="table table-striped">
                         <tr>
                             <th style="width:35px;">No</th>

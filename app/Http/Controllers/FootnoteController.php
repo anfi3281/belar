@@ -33,14 +33,15 @@ class FootnoteController extends Controller
         if(isset($request->input)){
             if($request->jenisf == 1){
                 if(isset($request->penulis_1)&&isset($request->penulis_2)&&isset($request->penulis_3)){
-                    // if($request->nourut !== $request->urut){
-                    for($i = $request->urut; $i >= $request->nourut; $i--){
-                        $x = $i + 1;
-                        DB::table('footnote')->where('id', $i)->update([
-                            'id' => $x
-                        ]);
+                    $urutan = $request->urut + 1;
+                    if($request->nourut !== $request->$urutan){
+                        for($i = $request->urut; $i >= $request->nourut; $i--){
+                            $x = $i + 1;
+                            DB::table('footnote')->where('id', $i)->update([
+                                'id' => $x
+                            ]);
+                        }
                     }
-                    // }
                     DB::table('footnote')->insert([
                         'id' => $request->nourut,
                         'penulis_1' => $request->penulis_1,
