@@ -27,6 +27,11 @@ return new class extends Migration
             $table->integer('halaman_akhir');
             $table->integer('jumlah_halaman');
             $table->integer('jenis');
+            $table->string('judul_web');
+            $table->string('deskripsi_web');
+            $table->integer('tahun_web');
+            $table->string('link_web');
+            $table->string('tanggal_diakses_web');
 
         });
     }
