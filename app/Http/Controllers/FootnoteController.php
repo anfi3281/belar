@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\DB;
 class FootnoteController extends Controller
 {
     public function index(){
+        return redirect('/1/1');
+    }
+
+    public function indexpenulis($jenis, $jumlahpenulis){
         $data = DB::table('footnote')->paginate(10);
 
-        return view('index', ['data' => $data]);
-    }
-    public function indexpenulis($jumlahpenulis){
-        $data = DB::table('footnote')->paginate(10);
-        return view('index', ['jumlahpenulis' => $jumlahpenulis, 'data' => $data]);
+        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data]);
     }
     public function kelola(Request $request){
         if(isset($request->input)){

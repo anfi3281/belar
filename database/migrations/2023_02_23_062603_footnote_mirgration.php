@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('halaman_awal');
             $table->integer('halaman_akhir');
             $table->integer('jumlah_halaman');
+            $table->integer('jenis');
 
         });
     }
