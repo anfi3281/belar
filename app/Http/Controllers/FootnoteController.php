@@ -17,6 +17,13 @@ class FootnoteController extends Controller
         $nomo = $nom->id + 1;
         return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo]);
     }
+    public function tampiledit($jenis, $jumlahpenulis, $ft){
+        $data = DB::table('footnote')->paginate(10);
+        $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
+        $editan = DB::table('footnote')->where('id', $ft)->get();
+        $nomo = $nom->id + 1;
+        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'editan' => $editan]);
+    }
     public function kelola(Request $request){
         if(isset($request->tomboljenis)){
             switch($request->jenis_footnote){
@@ -50,6 +57,7 @@ class FootnoteController extends Controller
                         'judul' => $request->judul,
                         'sumber' => $request->sumber,
                         'volume' => $request->volume,
+                        'jenis' => $request->jenisf,
                         'nomor' => $request->nomor,
                         'tahun' => $request->tahun,
                         'halaman_awal' => $request->halaman_awal,
@@ -65,6 +73,7 @@ class FootnoteController extends Controller
                         'volume' => $request->volume,
                         'nomor' => $request->nomor,
                         'judul' => $request->judul,
+                        'jenis' => $request->jenisf,
                         'tahun' => $request->tahun,
                         'halaman_awal' => $request->halaman_awal,
                         'halaman_akhir' => $request->halaman_akhir,
@@ -79,6 +88,7 @@ class FootnoteController extends Controller
                         'volume' => $request->volume,
                         'nomor' => $request->nomor,
                         'tahun' => $request->tahun,
+                        'jenis' => $request->jenisf,
                         'halaman_awal' => $request->halaman_awal,
                         'halaman_akhir' => $request->halaman_akhir,
                         'jumlah_penulis' => $request->jumlah_penulis
@@ -91,6 +101,7 @@ class FootnoteController extends Controller
                     'deskripsi_web' => $request->deskripsi_web,
                     'tahun_web' => $request->tahun_web,
                     'link_web' => $request->link_web,
+                    'jenis' => $request->jenisf,
                     'tanggal_diakses_web' => $request->tanggal_diakses_web
                 ]);
                 return redirect('/2/'.$request->jenisf);

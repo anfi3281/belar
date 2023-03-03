@@ -234,9 +234,9 @@
                     </table>
                     <table class="table table-striped">
                         <tr>
-                            <th style="width:35px;">No</th>
+                            <th style="width: 35px;">No</th>
                             <th>Footnote</th>
-                            <th style="width:25px;">Keterangan</th>
+                            <th style="width: 120px; text-align: center;">Keterangan</th>
                         </tr>
                         @foreach ($data as $ft)
                             <?php
@@ -281,10 +281,12 @@
                             <tr>
                                 <td>{{ $ft->id }}</td>
                                 <td>{{ $kalimat }}</td>
-                                <td>
-                                    <a href="/edit/{id}">Edit </a>
+                                <td style=" text-align: center;">
+                                    <a href="/edit/{{ $jenis }}/{{ $jumlahpenulis }}/{{ $ft->id }}"
+                                        style="text-decoration: none; font-weight: bold; color:blue;">EDIT </a>
                                     |
-                                    <a href="/hapus/{id}"> Hapus</a>
+                                    <a href="/hapus/{id}"
+                                        style="text-decoration: none; font-weight: bold; color:red;"> HAPUS</a>
                                 </td>
                             </tr>
                         @endforeach
