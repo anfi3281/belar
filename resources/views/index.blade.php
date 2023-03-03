@@ -190,12 +190,11 @@
 
 
             {{-- Tombol Kelola --}}
-            <div class="card">
+            <div class="card" style="height:75px;">
                 <div class="card-body">
                     <div class="text-center">
 
-                        <input type="submit" name="input" value="Input" class="w-25 btn btn-primary"
-                            style="margin-left:20px">
+                        <input type="submit" name="input" value="Input" class="w-25 btn btn-primary">
                         <input type="submit" name="edit" value="Edit" class="w-25 btn btn-danger"
                             style="margin-left:20px">
                     </div>
@@ -211,22 +210,27 @@
 
         {{-- Tabel Footnote --}}
         <div class="col-lg-8 mb-3">
-            <div class="card" style="height: 636px;">
+            <div class="card mb-3">
                 <div class="card-body">
-                    <table border="1">
-                        <tr>
-                            <td>
-                                <form action="/kelola">
-                                    <input type="submit" name="rapi" value="Rapihkan"
-                                        class="w-100 btn btn-primary">
+                    <div class="row pb-0 justify-content-left">
+                        <div class="pb-0 col-lg-2 mb-2 text-center">
+                            <div>
+                                <form action="/kelola" method="POST">
+                                    <input type="hidden" name="urut" value="{{ $nomor }}">
+                                    {{ csrf_field() }}
+                                    <input type="submit" name="rapi" value="Rapihkan" class="btn btn-success">
                                 </form>
-                            </td>
-                            <td>
-                                <a style="text-align: center;">Daftar Footnote</a>
-                            </td>
-                        </tr>
-
-
+                            </div>
+                        </div>
+                        <div class="pb-0 col-lg-10 text-center d-flex justify-content-center">
+                            {{ $data->links() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center">Daftar Footnote</h4>
                     </table>
                     <table class="table table-striped">
                         <tr>
@@ -287,6 +291,9 @@
                     </table>
                 </div>
             </div>
+
+
+
         </div>
     </div>
     {{-- End Tabel Footnote --}}

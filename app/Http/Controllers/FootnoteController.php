@@ -32,16 +32,16 @@ class FootnoteController extends Controller
 
         if(isset($request->input)){
             if($request->jenisf == 1){
-                if(isset($request->penulis_1)&&isset($request->penulis_2)&&isset($request->penulis_3)){
-                    $urutan = $request->urut + 1;
-                    if($request->nourut !== $request->$urutan){
-                        for($i = $request->urut; $i >= $request->nourut; $i--){
-                            $x = $i + 1;
-                            DB::table('footnote')->where('id', $i)->update([
-                                'id' => $x
-                            ]);
-                        }
+                $urutan = $request->urut + 1;
+                if($request->nourut !== $request->$urutan){
+                    for($i = $request->urut; $i >= $request->nourut; $i--){
+                        $x = $i + 1;
+                        DB::table('footnote')->where('id', $i)->update([
+                            'id' => $x
+                        ]);
                     }
+                }
+                if(isset($request->penulis_1)&&isset($request->penulis_2)&&isset($request->penulis_3)){
                     DB::table('footnote')->insert([
                         'id' => $request->nourut,
                         'penulis_1' => $request->penulis_1,
@@ -58,6 +58,7 @@ class FootnoteController extends Controller
                     ]);
                 } elseif (isset($request->penulis_1)&&isset($request->penulis_2)){
                     DB::table('footnote')->insert([
+                        'id' => $request->nourut,
                         'penulis_1' => $request->penulis_1,
                         'penulis_2' => $request->penulis_2,
                         'sumber' => $request->sumber,
@@ -71,6 +72,7 @@ class FootnoteController extends Controller
                     ]);
                 } elseif (isset($request->penulis_1)){
                     DB::table('footnote')->insert([
+                        'id' => $request->nourut,
                         'penulis_1' => $request->penulis_1,
                         'judul' => $request->judul,
                         'sumber' => $request->sumber,
@@ -96,6 +98,21 @@ class FootnoteController extends Controller
 
         } elseif(isset($request->edit)){
 
+        } elseif(isset($request->rapi)){
+            $angka = 0;
+            $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
+            for($u = 1; $u <= $nom->id; $u++){
+                $datanya = DB::table('footnote')->where('id', $u)->first();
+                if(!isset($datanya)){
+                    $angka = $angka + 1;
+                }else{
+                    $kurang = $datanya->id - $angka;
+                    DB::table('footnote')->where('id', $u)->update([
+                        'id' => $kurang
+                    ]);
+                }
+            }
+            return redirect('/1/1');
         }
     }
 }
