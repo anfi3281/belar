@@ -32,6 +32,7 @@ return new class extends Migration
             $table->integer('tahun_web');
             $table->string('link_web');
             $table->string('tanggal_diakses_web');
+            $table->string('kota');
 
         });
     }

@@ -115,34 +115,27 @@
                                                     placeholder="Tuliskan Judul"></textarea>
                                             </div>
 
-                                            <div class="mt-3 form-group">
-                                                <label for="sumber">Sumber : </label>
-                                                <input type="text" class="form-control-sm" name="sumber" placeholder="Sumber">
+                                            <div class="mt-1 form-group">
+                                                <textarea name="sumber" class="form-control"style="font-size : 11px;" id="" cols="30" rows="2"
+                                                    placeholder="Sumber"></textarea>
                                             </div>
 
                                             <div class="mt-2 form-group">
-                                                <label for="volume">Volume : </label>
-                                                <input type="text" class="form-control-sm" name="volume" placeholder="Volume">
-                                            </div>
-
-                                            <div class="mt-2 form-group">
-                                                <label for="nomor">Nomor : </label>
-                                                <input type="text" class="form-control-sm" name="nomor" placeholder="Nomor">
-                                            </div>
-
-                                            <div class="mt-2 form-group">
-                                                <label for="tahun">Tahun : </label>
-                                                <input type="text" class="form-control-sm" name="tahun" placeholder="Tahun">
-                                            </div>
-
-                                            <div class="mt-2 form-group">
-                                                <label for="halaman">Halaman : </label>
-                                                <input type="text" class="form-control-sm float-left" style="width:60px;"
+                                                <input type="text" class="text-center form-control-sm" name="volume" style="width:70px;" placeholder="Volume">
+                                                <input type="text" class="text-center form-control-sm" name="nomor" style="width:70px;" placeholder="Nomor">
+                                                <input type="text" class="text-center form-control-sm" name="tahun" style="width:70px;" placeholder="Tahun" >
+                                                <label for="halaman">Hal: </label>
+                                                <input type="text" class="text-center form-control-sm float-left" style="width:60px;"
                                                     name="halaman_awal" placeholder="Awal">
                                                 -
-                                                <input type="text" class="form-control-sm float-left" style="width:60px;"
+                                                <input type="text" class="text-center form-control-sm float-left" style="width:60px;"
                                                     name="halaman_akhir" placeholder="Akhir">
                                             </div>
+                                            <div class="mt-2 form-group">
+                                                <input type="text" class="form-control"
+                                                    name="kota" placeholder="Asal Kota">
+                                            </div>
+
                                             {{-- End Form Jurnal --}}
                                         @break
 
@@ -227,7 +220,7 @@
                                 <div class="mt-1 form-group">
                                     @if (isset($jumlahpenulis))
                                         @if ($jumlahpenulis == 4)
-                                            <input type="text" class=" form-control" placeholder="Penulis 1" name="penulis_1">
+                                            <input type="text" class=" form-control" placeholder="Penulis 1" name="penulis_1" value="{{ $edita->penulis_1 }}">
                                         @elseif ($jumlahpenulis == 3)
                                             <input type="text" class="form-control" placeholder="Penulis 1" name="penulis_1"
                                                 value="{{ $edita->penulis_1 }}">
@@ -255,27 +248,20 @@
                                         rows="3" placeholder="Tuliskan Judul">{{ $edita->judul }}</textarea>
                                 </div>
 
-                                <div class="mt-3 form-group">
-                                    <label for="sumber">Sumber : </label>
-                                    <input type="text" class="form-control-sm" name="sumber" placeholder="Sumber"
-                                        value="{{ $edita->sumber }}">
+                                <div class="mt-1 form-group">
+                                    <textarea name="sumber" class="form-control"style="font-size : 11px;" id="" cols="30"
+                                        rows="2" placeholder="Sumber">{{ $edita->sumber }}</textarea>
                                 </div>
 
                                 <div class="mt-2 form-group">
                                     <label for="volume">Volume : </label>
-                                    <input type="text" class="form-control-sm" name="volume" placeholder="Volume"
+                                    <input type="text" class="form-control-sm" name="volume" style="width:70px;" placeholder="Volume"
                                         value="{{ $edita->volume }}">
-                                </div>
-
-                                <div class="mt-2 form-group">
                                     <label for="nomor">Nomor : </label>
-                                    <input type="text" class="form-control-sm" name="nomor" placeholder="Nomor"
+                                    <input type="text" class="form-control-sm" name="nomor" style="width:70px;" placeholder="Nomor"
                                         value="{{ $edita->nomor }}">
-                                </div>
-
-                                <div class="mt-2 form-group">
                                     <label for="tahun">Tahun : </label>
-                                    <input type="text" class="form-control-sm" name="tahun"
+                                    <input type="text" class="form-control-sm" style="width:60px;" name="tahun"
                                         placeholder="Tahun"value="{{ $edita->tahun }}">
                                 </div>
 
@@ -286,6 +272,11 @@
                                     -
                                     <input type="text" class="form-control-sm float-left" style="width:60px;"
                                         name="halaman_akhir" placeholder="Akhir" value="{{ $edita->halaman_akhir }}">
+                                </div>
+                                <div class="mt-2 form-group">
+                                    <label for="halaman">Asal Kota : </label>
+                                    <input type="text" class="form-control-sm"
+                                        name="kota" placeholder="Asal Kota" value="{{ $edita->kota }}">
                                 </div>
                                 {{-- End Form Jurnal --}}
                             @break
@@ -362,16 +353,17 @@
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row pb-0 justify-content-left">
-                    <div class="pb-0 col-lg-2 mb-2 text-center">
+                    <div class="pb-0 col-lg-5 mb-2 text-center">
                         <div>
                             <form action="/kelola" method="POST">
                                 <input type="hidden" name="urut" value="{{ $nomor }}">
                                 {{ csrf_field() }}
-                                <input type="submit" name="rapi" value="Rapihkan" class="btn btn-success">
+                                <input type="submit" name="rapi" value="Daftar Footnote" class="btn btn-success">
+                                <input type="submit" name="dapus" value="Daftar Pustaka" class="btn btn-danger">
                             </form>
                         </div>
                     </div>
-                    <div class="pb-0 col-lg-10 text-center d-flex justify-content-center">
+                    <div class="pb-0 col-lg-6 text-center d-flex justify-content-center">
                         {{ $data->links() }}
                     </div>
                 </div>
@@ -379,67 +371,99 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="text-center">Daftar Footnote</h4>
-                <table class="table table-striped">
-                    <tr>
-                        <th style="width: 35px;">No</th>
-                        <th>Footnote</th>
-                        <th style="width: 120px; text-align: center;">Keterangan</th>
-                    </tr>
-                    @foreach ($data as $ft)
-                        <?php
-                        if ($ft->jumlah_penulis == 3) {
-                            $kalimat = $ft->penulis_1;
-                            $kalimat .= ', ';
-                            $kalimat .= $ft->penulis_2;
-                            $kalimat .= ', dan ';
-                            $kalimat .= $ft->penulis_3;
-                            $kalimat .= ', "';
-                        } elseif ($ft->jumlah_penulis == 2) {
-                            $kalimat = $ft->penulis_1;
-                            $kalimat .= ' dan ';
-                            $kalimat .= $ft->penulis_2;
-                            $kalimat .= ', "';
-                        } elseif ($ft->jumlah_penulis == 1) {
-                            $kalimat = $ft->penulis_1;
-                            $kalimat .= ', "';
-                        } else {
-                            $kalimat = $ft->penulis_1;
-                            $kalimat .= ' et al., "';
-                        }
-                        $kalimat .= $ft->judul;
-                        $kalimat .= '", ';
-                        $kalimat .= $ft->sumber;
-                        $kalimat .= ', Vol. ';
-                        $kalimat .= $ft->volume;
-                        $kalimat .= ', No. ';
-                        $kalimat .= $ft->nomor;
-                        $kalimat .= ' (';
-                        $kalimat .= $ft->tahun;
-                        $kalimat .= '), hal. ';
-                        if (isset($ft->halaman_akhir)) {
-                            $kalimat .= $ft->halaman_awal;
-                            $kalimat .= '-';
-                            $kalimat .= $ft->halaman_akhir;
-                        } else {
-                            $kalimat .= $ft->halaman_awal;
-                        }
-                        $kalimat .= '.';
-                        ?>
-                        <tr>
-                            <td>{{ $ft->id }}</td>
-                            <td>{{ $kalimat }}</td>
-                            <td style=" text-align: center;">
-                                <a href="/edit/{{ $ft->jenis }}/{{ $ft->jumlah_penulis }}/{{ $ft->id }}"
-                                    style="text-decoration: none; font-weight: bold; color:blue;">EDIT </a>
-                                |
-                                <a href="/hapus/{{ $ft->id }}"
-                                    style="text-decoration: none; font-weight: bold; color:red;">
-                                    HAPUS</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </table>
+                @switch($dapus)
+                    @case(0)
+                        <h4 class="text-center">Daftar Footnote</h4>
+                        <table class="table table-striped">
+                            <tr>
+                                <th style="width: 35px;">No</th>
+                                <th>Footnote</th>
+                                <th style="width: 120px; text-align: center;">Keterangan</th>
+                            </tr>
+                            @foreach ($data as $ft)
+                                <?php
+                                if ($ft->jenis == 1) {
+                                    if ($ft->jumlah_penulis == 3) {
+                                        $kalimat = $ft->penulis_1;
+                                        $kalimat .= ', ';
+                                        $kalimat .= $ft->penulis_2;
+                                        $kalimat .= ', dan ';
+                                        $kalimat .= $ft->penulis_3;
+                                        $kalimat .= ', "';
+                                    } elseif ($ft->jumlah_penulis == 2) {
+                                        $kalimat = $ft->penulis_1;
+                                        $kalimat .= ' dan ';
+                                        $kalimat .= $ft->penulis_2;
+                                        $kalimat .= ', "';
+                                    } elseif ($ft->jumlah_penulis == 1) {
+                                        $kalimat = $ft->penulis_1;
+                                        $kalimat .= ', "';
+                                    } else {
+                                        $kalimat = $ft->penulis_1;
+                                        $kalimat .= ' et al., "';
+                                    }
+                                    $kalimat .= $ft->judul;
+                                    $kalimat .= '", ';
+                                    $kalimat .= $ft->sumber;
+                                    if (isset($ft->volume)) {
+                                        $kalimat .= ', Vol. ';
+                                        $kalimat .= $ft->volume;
+                                        $kalimat .= ', ';
+                                    } else {
+                                        $kalimat .= ', ';
+                                    }
+                                    if (isset($ft->nomor)) {
+                                        $kalimat .= 'No. ';
+                                        $kalimat .= $ft->nomor;
+                                        $kalimat .= ' (';
+                                        $kalimat .= $ft->tahun;
+                                        $kalimat .= '), hal. ';
+                                    } else {
+                                        $kalimat .= $ft->tahun;
+                                        $kalimat .= ', hal. ';
+                                    }
+                                    if (isset($ft->halaman_akhir)) {
+                                        $kalimat .= $ft->halaman_awal;
+                                        $kalimat .= '-';
+                                        $kalimat .= $ft->halaman_akhir;
+                                    } else {
+                                        $kalimat .= $ft->halaman_awal;
+                                    }
+                                    $kalimat .= '.';
+                                } elseif ($ft->jenis) {
+                                    $kalimat = $ft->judul_web;
+                                    $kalimat .= ', "';
+                                    $kalimat .= $ft->deskripsi_web;
+                                    $kalimat .= '", ';
+                                    $kalimat .= $ft->tahun_web;
+                                    $kalimat .= ', ';
+                                    $kalimat .= $ft->link_web;
+                                    $kalimat .= '. ';
+                                    $kalimat .= $ft->tanggal_diakses_web;
+                                    $kalimat .= '.';
+                                }
+                                ?>
+                                <tr>
+                                    <td>{{ $ft->id }}</td>
+                                    <td>{{ $kalimat }}</td>
+                                    <td style=" text-align: center;">
+                                        <a href="/edit/{{ $ft->jenis }}/{{ $ft->jumlah_penulis }}/{{ $ft->id }}"
+                                            style="text-decoration: none; font-weight: bold; color:blue;">EDIT </a>
+                                        |
+                                        <a href="/hapus/{{ $ft->id }}"
+                                            style="text-decoration: none; font-weight: bold; color:red;">
+                                            HAPUS</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    @break
+
+                    @case(1)
+                    <h4 class="text-center">Daftar Pustaka</h4>
+                    @break
+
+                @endswitch
             </div>
         </div>
     </div>

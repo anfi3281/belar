@@ -16,10 +16,32 @@ class FootnoteController extends Controller
         $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
         $nomo = $nom->id + 1;
         $apakahedit = 0;
-        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'apakahedit' => $apakahedit]);
+        $dapus = 0;
+        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'apakahedit' => $apakahedit, 'dapus' => $dapus]);
+    }
+    public function dapus($jenis, $jumlahpenulis){
+        $data = DB::table('footnote')->paginate(10);
+        $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
+        $nomo = $nom->id + 1;
+        $apakahedit = 0;
+        $dapus = 1;
+        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'apakahedit' => $apakahedit, 'dapus' => $dapus]);
     }
     public function hapus($ft){
         DB::table('footnote')->where('id', $ft)->delete();
+        $angka = 0;
+        $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
+        for($u = $ft; $u <= $nom->id; $u++){
+            $datanya = DB::table('footnote')->where('id', $u)->first();
+            if(!isset($datanya)){
+                $angka = $angka + 1;
+            }else{
+                $kurang = $datanya->id - $angka;
+                DB::table('footnote')->where('id', $u)->update([
+                    'id' => $kurang
+                ]);
+            }
+        }
         return redirect('/');
     }
     public function tampiledit($jenis, $jumlahpenulis, $ft){
@@ -27,11 +49,12 @@ class FootnoteController extends Controller
         $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
         $editan = DB::table('footnote')->where('id', $ft)->get();
         $nomo = 0;
+        $dapus = 0;
         foreach($editan as $ediit){
             $nomo = $ediit->id;
         }
         $apakahedit = 1;
-        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'editan' => $editan, 'apakahedit' => $apakahedit]);
+        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'editan' => $editan, 'apakahedit' => $apakahedit, 'dapus' => $dapus]);
     }
     public function kelola(Request $request){
         if(isset($request->tomboljenis)){
@@ -68,6 +91,7 @@ class FootnoteController extends Controller
                         'volume' => $request->volume,
                         'jenis' => $request->jenisf,
                         'nomor' => $request->nomor,
+                        'kota' => $request->kota,
                         'tahun' => $request->tahun,
                         'halaman_awal' => $request->halaman_awal,
                         'halaman_akhir' => $request->halaman_akhir,
@@ -81,6 +105,7 @@ class FootnoteController extends Controller
                         'sumber' => $request->sumber,
                         'volume' => $request->volume,
                         'nomor' => $request->nomor,
+                        'kota' => $request->kota,
                         'judul' => $request->judul,
                         'jenis' => $request->jenisf,
                         'tahun' => $request->tahun,
@@ -93,6 +118,7 @@ class FootnoteController extends Controller
                         'id' => $request->nourut,
                         'penulis_1' => $request->penulis_1,
                         'judul' => $request->judul,
+                        'kota' => $request->kota,
                         'sumber' => $request->sumber,
                         'volume' => $request->volume,
                         'nomor' => $request->nomor,
@@ -151,6 +177,7 @@ class FootnoteController extends Controller
                             'volume' => $request->volume,
                             'jenis' => $request->jenisf,
                             'nomor' => $request->nomor,
+                            'kota' => $request->kota,
                             'tahun' => $request->tahun,
                             'halaman_awal' => $request->halaman_awal,
                             'halaman_akhir' => $request->halaman_akhir,
@@ -164,6 +191,7 @@ class FootnoteController extends Controller
                             'sumber' => $request->sumber,
                             'volume' => $request->volume,
                             'nomor' => $request->nomor,
+                            'kota' => $request->kota,
                             'judul' => $request->judul,
                             'jenis' => $request->jenisf,
                             'tahun' => $request->tahun,
@@ -178,6 +206,7 @@ class FootnoteController extends Controller
                             'judul' => $request->judul,
                             'sumber' => $request->sumber,
                             'volume' => $request->volume,
+                            'kota' => $request->kota,
                             'nomor' => $request->nomor,
                             'tahun' => $request->tahun,
                             'jenis' => $request->jenisf,
@@ -249,6 +278,7 @@ class FootnoteController extends Controller
                             'jenis' => $request->jenisf,
                             'nomor' => $request->nomor,
                             'tahun' => $request->tahun,
+                            'kota' => $request->kota,
                             'halaman_awal' => $request->halaman_awal,
                             'halaman_akhir' => $request->halaman_akhir,
                             'jumlah_penulis' => $request->jumlah_penulis
@@ -262,6 +292,7 @@ class FootnoteController extends Controller
                             'volume' => $request->volume,
                             'nomor' => $request->nomor,
                             'judul' => $request->judul,
+                            'kota' => $request->kota,
                             'jenis' => $request->jenisf,
                             'tahun' => $request->tahun,
                             'halaman_awal' => $request->halaman_awal,
@@ -276,6 +307,7 @@ class FootnoteController extends Controller
                             'sumber' => $request->sumber,
                             'volume' => $request->volume,
                             'nomor' => $request->nomor,
+                            'kota' => $request->kota,
                             'tahun' => $request->tahun,
                             'jenis' => $request->jenisf,
                             'halaman_awal' => $request->halaman_awal,
@@ -307,6 +339,7 @@ class FootnoteController extends Controller
                             'judul' => $request->judul,
                             'sumber' => $request->sumber,
                             'volume' => $request->volume,
+                            'kota' => $request->kota,
                             'jenis' => $request->jenisf,
                             'nomor' => $request->nomor,
                             'tahun' => $request->tahun,
@@ -322,6 +355,7 @@ class FootnoteController extends Controller
                             'volume' => $request->volume,
                             'nomor' => $request->nomor,
                             'judul' => $request->judul,
+                            'kota' => $request->kota,
                             'jenis' => $request->jenisf,
                             'tahun' => $request->tahun,
                             'halaman_awal' => $request->halaman_awal,
@@ -335,6 +369,7 @@ class FootnoteController extends Controller
                             'sumber' => $request->sumber,
                             'volume' => $request->volume,
                             'nomor' => $request->nomor,
+                            'kota' => $request->kota,
                             'tahun' => $request->tahun,
                             'jenis' => $request->jenisf,
                             'halaman_awal' => $request->halaman_awal,
@@ -369,8 +404,11 @@ class FootnoteController extends Controller
                         'id' => $kurang
                     ]);
                 }
+                return redirect('/1/1');
             }
-            return redirect('/1/1');
+        } elseif(isset($request->dapus)){
+
+            return redirect('/dapus/1/1');
         }
 
     }

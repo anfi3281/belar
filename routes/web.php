@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FootnoteController@index');
 Route::get('/hapus/{ft}', 'FootnoteController@hapus');
+Route::get('/dapus/{jenis}/{penulis}', 'FootnoteController@dapus');
 Route::get('/{jenis}/{penulis}', 'FootnoteController@indexpenulis');
 Route::get('/edit/{jenis}/{penulis}/{ft}', 'FootnoteController@tampiledit');
 Route::post('/kelola', 'FootnoteController@kelola');
