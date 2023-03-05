@@ -121,19 +121,21 @@
                                             </div>
 
                                             <div class="mt-2 form-group">
-                                                <input type="text" class="text-center form-control-sm" name="volume" style="width:70px;" placeholder="Volume">
-                                                <input type="text" class="text-center form-control-sm" name="nomor" style="width:70px;" placeholder="Nomor">
-                                                <input type="text" class="text-center form-control-sm" name="tahun" style="width:70px;" placeholder="Tahun" >
+                                                <input type="text" class="text-center form-control-sm" name="volume"
+                                                    style="width:70px;" placeholder="Volume">
+                                                <input type="text" class="text-center form-control-sm" name="nomor"
+                                                    style="width:70px;" placeholder="Nomor">
+                                                <input type="text" class="text-center form-control-sm" name="tahun"
+                                                    style="width:70px;" placeholder="Tahun">
                                                 <label for="halaman">Hal: </label>
-                                                <input type="text" class="text-center form-control-sm float-left" style="width:60px;"
-                                                    name="halaman_awal" placeholder="Awal">
+                                                <input type="text" class="text-center form-control-sm float-left"
+                                                    style="width:60px;" name="halaman_awal" placeholder="Awal">
                                                 -
-                                                <input type="text" class="text-center form-control-sm float-left" style="width:60px;"
-                                                    name="halaman_akhir" placeholder="Akhir">
+                                                <input type="text" class="text-center form-control-sm float-left"
+                                                    style="width:60px;" name="halaman_akhir" placeholder="Akhir">
                                             </div>
                                             <div class="mt-2 form-group">
-                                                <input type="text" class="form-control"
-                                                    name="kota" placeholder="Asal Kota">
+                                                <input type="text" class="form-control" name="kota" placeholder="Asal Kota">
                                             </div>
 
                                             {{-- End Form Jurnal --}}
@@ -220,7 +222,8 @@
                                 <div class="mt-1 form-group">
                                     @if (isset($jumlahpenulis))
                                         @if ($jumlahpenulis == 4)
-                                            <input type="text" class=" form-control" placeholder="Penulis 1" name="penulis_1" value="{{ $edita->penulis_1 }}">
+                                            <input type="text" class=" form-control" placeholder="Penulis 1" name="penulis_1"
+                                                value="{{ $edita->penulis_1 }}">
                                         @elseif ($jumlahpenulis == 3)
                                             <input type="text" class="form-control" placeholder="Penulis 1" name="penulis_1"
                                                 value="{{ $edita->penulis_1 }}">
@@ -255,11 +258,11 @@
 
                                 <div class="mt-2 form-group">
                                     <label for="volume">Volume : </label>
-                                    <input type="text" class="form-control-sm" name="volume" style="width:70px;" placeholder="Volume"
-                                        value="{{ $edita->volume }}">
+                                    <input type="text" class="form-control-sm" name="volume" style="width:70px;"
+                                        placeholder="Volume" value="{{ $edita->volume }}">
                                     <label for="nomor">Nomor : </label>
-                                    <input type="text" class="form-control-sm" name="nomor" style="width:70px;" placeholder="Nomor"
-                                        value="{{ $edita->nomor }}">
+                                    <input type="text" class="form-control-sm" name="nomor" style="width:70px;"
+                                        placeholder="Nomor" value="{{ $edita->nomor }}">
                                     <label for="tahun">Tahun : </label>
                                     <input type="text" class="form-control-sm" style="width:60px;" name="tahun"
                                         placeholder="Tahun"value="{{ $edita->tahun }}">
@@ -275,8 +278,8 @@
                                 </div>
                                 <div class="mt-2 form-group">
                                     <label for="halaman">Asal Kota : </label>
-                                    <input type="text" class="form-control-sm"
-                                        name="kota" placeholder="Asal Kota" value="{{ $edita->kota }}">
+                                    <input type="text" class="form-control-sm" name="kota" placeholder="Asal Kota"
+                                        value="{{ $edita->kota }}">
                                 </div>
                                 {{-- End Form Jurnal --}}
                             @break
@@ -358,7 +361,8 @@
                             <form action="/kelola" method="POST">
                                 <input type="hidden" name="urut" value="{{ $nomor }}">
                                 {{ csrf_field() }}
-                                <input type="submit" name="rapi" value="Daftar Footnote" class="btn btn-success">
+                                <input type="submit" name="rapi" value="Daftar Footnote"
+                                    class="btn btn-success">
                                 <input type="submit" name="dapus" value="Daftar Pustaka" class="btn btn-danger">
                             </form>
                         </div>
@@ -400,7 +404,7 @@
                                         $kalimat .= ', "';
                                     } else {
                                         $kalimat = $ft->penulis_1;
-                                        $kalimat .= ' et al., "';
+                                        $kalimat .= ' dkk, "';
                                     }
                                     $kalimat .= $ft->judul;
                                     $kalimat .= '", ';
@@ -460,7 +464,85 @@
                     @break
 
                     @case(1)
-                    <h4 class="text-center">Daftar Pustaka</h4>
+                        <h4 class="text-center mb-4">Daftar Pustaka</h4>
+                        <div style="font-size: 12pt; font-family: 'Times New Roman';">
+                            <?php
+                            require 'koneksi.php';
+                            $query = 'TRUNCATE `dapus_tabel`';
+                            mysqli_query($host, $query);
+                            ?>
+                            @foreach ($data as $ft)
+                                <?php
+                                $query = 'SELECT * FROM footnote';
+                                $datapus = mysqli_query($host, $query);
+                                while ($datapusta = mysqli_fetch_array($datapus)) {
+                                    if ($datapusta[1] == $ft->judul) {
+                                    } else {
+                                        if ($ft->jenis == 1) {
+                                            $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`, `created_at`, `updated_at`) VALUES (NULL, '$ft->judul', NULL, NULL);";
+                                            mysqli_query($host, $query);
+                                            $kal = $ft->penulis_1;
+                                            $kali = explode(' ', $kal);
+                                            $lika = end($kali);
+                                            $kalimat = $lika;
+                                            $kalimat .= ', ';
+                                            foreach ($kali as $kila) {
+                                                if ($kila == $lika) {
+                                                } else {
+                                                    $kalimat .= ' ';
+                                                    $kalimat .= $kila;
+                                                }
+                                            }
+                                            if ($ft->jumlah_penulis == 3) {
+                                                $kalimat .= ', ';
+                                                $kalimat .= $ft->penulis_2;
+                                                $kalimat .= ', dan ';
+                                                $kalimat .= $ft->penulis_3;
+                                                $kalimat .= '. ';
+                                            } elseif ($ft->jumlah_penulis == 2) {
+                                                $kalimat .= ', ';
+                                                $kalimat .= $ft->penulis_2;
+                                                $kalimat .= '. ';
+                                            } elseif ($ft->jumlah_penulis == 1) {
+                                                $kalimat .= '. ';
+                                            } else {
+                                                $kalimat .= ' dkk. ';
+                                            }
+                                            $kalimat .= $ft->tahun;
+                                            $kalimat .= '. ';
+                                            $kalimat .= $ft->judul;
+                                            $kalimat .= '. ';
+                                            $kalimat .= $ft->kota;
+                                            $kalimat .= ': ';
+                                            $kalimat .= $ft->sumber;
+                                            $kalimat .= '.';
+                                        } elseif ($ft->jenis == 2) {
+                                            $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`, `created_at`, `updated_at`) VALUES (NULL, '$ft->judul_web', NULL, NULL);";
+                                            mysqli_query($host, $query);
+                                            $kal = $ft->judul_web;
+                                            $kali = explode(' ', $kal);
+                                            $lika = end($kali);
+                                            $kalimat = $lika;
+                                            $kalimat .= ', ';
+                                            foreach ($kali as $kila) {
+                                                if ($kila == $lika) {
+                                                } else {
+                                                    $kalimat .= ' ';
+                                                    $kalimat .= $kila;
+                                                }
+                                            }
+                                            $kalimat .= '. ';
+                                            $kalimat .= $ft->link_web;
+                                            $kalimat .= ', diakses pada ';
+                                            $kalimat .= $ft->tanggal_diakses_web;
+                                            $kalimat .= '. ';
+                                        }
+                                        echo $kalimat . '<br/> <br/>';
+                                    }
+                                }
+                                ?>
+                            @endforeach
+                        </div>
                     @break
 
                 @endswitch

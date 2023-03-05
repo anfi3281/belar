@@ -12,7 +12,7 @@ class FootnoteController extends Controller
     }
 
     public function indexpenulis($jenis, $jumlahpenulis){
-        $data = DB::table('footnote')->paginate(10);
+        $data = DB::table('footnote')->orderBy('id', 'DESC')->paginate(10);
         $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
         $nomo = $nom->id + 1;
         $apakahedit = 0;
@@ -45,7 +45,7 @@ class FootnoteController extends Controller
         return redirect('/');
     }
     public function tampiledit($jenis, $jumlahpenulis, $ft){
-        $data = DB::table('footnote')->paginate(10);
+        $data = DB::table('footnote')->orderBy('id', 'DESC')->paginate(10);
         $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
         $editan = DB::table('footnote')->where('id', $ft)->get();
         $nomo = 0;
