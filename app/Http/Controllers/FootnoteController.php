@@ -20,7 +20,7 @@ class FootnoteController extends Controller
         return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'apakahedit' => $apakahedit, 'dapus' => $dapus]);
     }
     public function dapus($jenis, $jumlahpenulis){
-        $data = DB::table('footnote')->paginate(10);
+        $data = DB::table('footnote')->get();
         $nom = DB::table('footnote')->orderBy('id', 'DESC')->first();
         $nomo = $nom->id + 1;
         $apakahedit = 0;
