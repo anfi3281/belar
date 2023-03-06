@@ -473,73 +473,90 @@
                             ?>
                             @foreach ($data as $ft)
                                 <?php
-                                $query = 'SELECT * FROM footnote';
-                                $datapus = mysqli_query($host, $query);
-                                while ($datapusta = mysqli_fetch_array($datapus)) {
-                                    if ($datapusta[1] == $ft->judul) {
-                                    } else {
-                                        if ($ft->jenis == 1) {
-                                            $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`, `created_at`, `updated_at`) VALUES (NULL, '$ft->judul', NULL, NULL);";
-                                            mysqli_query($host, $query);
-                                            $kal = $ft->penulis_1;
-                                            $kali = explode(' ', $kal);
-                                            $lika = end($kali);
-                                            $kalimat = $lika;
-                                            $kalimat .= ', ';
-                                            foreach ($kali as $kila) {
-                                                if ($kila == $lika) {
-                                                } else {
-                                                    $kalimat .= ' ';
-                                                    $kalimat .= $kila;
-                                                }
-                                            }
-                                            if ($ft->jumlah_penulis == 3) {
-                                                $kalimat .= ', ';
-                                                $kalimat .= $ft->penulis_2;
-                                                $kalimat .= ', dan ';
-                                                $kalimat .= $ft->penulis_3;
-                                                $kalimat .= '. ';
-                                            } elseif ($ft->jumlah_penulis == 2) {
-                                                $kalimat .= ', ';
-                                                $kalimat .= $ft->penulis_2;
-                                                $kalimat .= '. ';
-                                            } elseif ($ft->jumlah_penulis == 1) {
-                                                $kalimat .= '. ';
-                                            } else {
-                                                $kalimat .= ' dkk. ';
-                                            }
-                                            $kalimat .= $ft->tahun;
-                                            $kalimat .= '. ';
-                                            $kalimat .= $ft->judul;
-                                            $kalimat .= '. ';
-                                            $kalimat .= $ft->kota;
-                                            $kalimat .= ': ';
-                                            $kalimat .= $ft->sumber;
-                                            $kalimat .= '.';
-                                        } elseif ($ft->jenis == 2) {
-                                            $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`, `created_at`, `updated_at`) VALUES (NULL, '$ft->judul_web', NULL, NULL);";
-                                            mysqli_query($host, $query);
-                                            $kal = $ft->judul_web;
-                                            $kali = explode(' ', $kal);
-                                            $lika = end($kali);
-                                            $kalimat = $lika;
-                                            $kalimat .= ', ';
-                                            foreach ($kali as $kila) {
-                                                if ($kila == $lika) {
-                                                } else {
-                                                    $kalimat .= ' ';
-                                                    $kalimat .= $kila;
-                                                }
-                                            }
-                                            $kalimat .= '. ';
-                                            $kalimat .= $ft->link_web;
-                                            $kalimat .= ', diakses pada ';
-                                            $kalimat .= $ft->tanggal_diakses_web;
-                                            $kalimat .= '. ';
-                                        }
-                                        echo $kalimat . '<br/> <br/>';
+                                if ($ft->jenis == 1) {
+                                    $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`) VALUES (NULL, '$ft->judul')";
+                                    $queryy = "SELECT * FROM `dapus_tabel` WHERE `judul_dapus` LIKE '%" . $ft->judul . "%'";
+                                    mysqli_query($host, $query);
+                                    $datapus = mysqli_query($host, $queryy);
+                                    // echo $ft->judul . '<br/>';
+                                    $angka = 0;
+                                    while ($datapusta = mysqli_fetch_array($datapus)) {
+                                        $angka = $angka +1;
+                                        echo $datapusta[1].$angka."<br/>"."<br/>";
+                                        // if (str_contains($datapusta['judul_dapus'], $ft->judul)) {
+                                        // } else {
+                                        //     $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`) VALUES (NULL, '$ft->judul')";
+                                        //     mysqli_query($host, $query);
+                                        //     $kal = $ft->penulis_1;
+                                        //     $kali = explode(' ', $kal);
+                                        //     $lika = end($kali);
+                                        //     $kalimat = $lika;
+                                        //     $kalimat .= ', ';
+                                        //     foreach ($kali as $kila) {
+                                        //         if ($kila == $lika) {
+                                        //         } else {
+                                        //             $kalimat .= ' ';
+                                        //             $kalimat .= $kila;
+                                        //         }
+                                        //     }
+                                        //     if ($ft->jumlah_penulis == 3) {
+                                        //         $kalimat .= ', ';
+                                        //         $kalimat .= $ft->penulis_2;
+                                        //         $kalimat .= ', dan ';
+                                        //         $kalimat .= $ft->penulis_3;
+                                        //         $kalimat .= '. ';
+                                        //     } elseif ($ft->jumlah_penulis == 2) {
+                                        //         $kalimat .= ', ';
+                                        //         $kalimat .= $ft->penulis_2;
+                                        //         $kalimat .= '. ';
+                                        //     } elseif ($ft->jumlah_penulis == 1) {
+                                        //         $kalimat .= '. ';
+                                        //     } else {
+                                        //         $kalimat .= ' dkk. ';
+                                        //     }
+                                        //     $kalimat .= $ft->tahun;
+                                        //     $kalimat .= '. ';
+                                        //     $kalimat .= $ft->judul;
+                                        //     $kalimat .= '. ';
+                                        //     $kalimat .= $ft->kota;
+                                        //     $kalimat .= ': ';
+                                        //     $kalimat .= $ft->sumber;
+                                        //     $kalimat .= '.';
+                                        // }
                                     }
+                                    // if (isset($kalimat)) {
+                                    //     echo $kalimat . '<br/> <br/>';
+                                    // } else {
+                                    // }
+                                } elseif ($ft->jenis == 2) {
+                                    // $queryy = 'SELECT * FROM `dapus_tabel`';
+                                    // $datapus = mysqli_query($host, $queryy);
+                                    // while ($datapusta = mysqli_fetch_array($datapus)) {
+                                    //     if (str_contains($ft->judul_web, $datapusta[1])) {
+                                    //     } else {
+                                    // $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`, `created_at`, `updated_at`) VALUES (NULL, '$ft->judul_web', NULL, NULL);";
+                                    // mysqli_query($host, $query);
+                                    $kal = $ft->judul_web;
+                                    $kali = explode(' ', $kal);
+                                    $lika = end($kali);
+                                    $kalimat = $lika;
+                                    $kalimat .= ', ';
+                                    foreach ($kali as $kila) {
+                                        if ($kila == $lika) {
+                                        } else {
+                                            $kalimat .= ' ';
+                                            $kalimat .= $kila;
+                                        }
+                                    }
+                                    $kalimat .= '. ';
+                                    $kalimat .= $ft->link_web;
+                                    $kalimat .= ', diakses pada ';
+                                    $kalimat .= $ft->tanggal_diakses_web;
+                                    $kalimat .= '. ';
+                                    echo $kalimat . '<br/> <br/>';
                                 }
+                                //     }
+                                // }
                                 ?>
                             @endforeach
                         </div>
