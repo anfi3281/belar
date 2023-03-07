@@ -464,72 +464,77 @@
                         <h4 class="text-center mb-4">Daftar Pustaka</h4>
                         <div style="font-size: 12pt; font-family: 'Times New Roman';">
                             <?php
-                            require 'koneksi.php';
-                            $query = 'TRUNCATE `dapus_tabel`';
-                            mysqli_query($host, $query);
+                            $a = ['hy'];
                             ?>
                             @foreach ($data as $ft)
                                 <?php
+                                $izin = 0;
+                                $ket = 0;
                                 if ($ft->jenis == 1) {
-                                    $queryy = "SELECT * FROM `dapus_tabel` WHERE `judul_dapus` LIKE '%" . $ft->judul . "%'";
-                                    $datapus .= mysqli_query($host, $queryy);
-                                    $angka = 0;
-                                    while ($datapusta = mysqli_fetch_array($datapus)) {
-                                        $angka = $angka + 1;
-                                        echo $datapusta[1] . $angka . '<br/>' . '<br/>';
-                                        if (str_contains($datapusta['judul_dapus'], $ft->judul)) {
+                                    for ($w = 1; $w <= $ft->id; $w++) {
+                                        if (isset($a[$w])) {
+                                            if ($ft->judul == $a[$w]) {
+                                                $izin = 0;
+                                            } else {
+                                                // $izin = 1;
+                                                // $ket = 1;
+                                            }
                                         } else {
-                                            $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`) VALUES (NULL, '$ft->judul')";
-                                            mysqli_query($host, $query);
-                                            $kal = $ft->penulis_1;
-                                            $kali = explode(' ', $kal);
-                                            $lika = end($kali);
-                                            $kalimat = $lika;
-                                            $kalimat .= ', ';
-                                            foreach ($kali as $kila) {
-                                                if ($kila == $lika) {
-                                                } else {
-                                                    $kalimat .= ' ';
-                                                    $kalimat .= $kila;
+                                            for ($o = 1; $o <= $ft->id; $o++) {
+                                                if (isset($a[$o])) {
+                                                    if ($ft->judul == $a[$o]) {
+                                                        $ket = 1;
+                                                    }
                                                 }
                                             }
-                                            if ($ft->jumlah_penulis == 3) {
-                                                $kalimat .= ', ';
-                                                $kalimat .= $ft->penulis_2;
-                                                $kalimat .= ', dan ';
-                                                $kalimat .= $ft->penulis_3;
-                                                $kalimat .= '. ';
-                                            } elseif ($ft->jumlah_penulis == 2) {
-                                                $kalimat .= ', ';
-                                                $kalimat .= $ft->penulis_2;
-                                                $kalimat .= '. ';
-                                            } elseif ($ft->jumlah_penulis == 1) {
-                                                $kalimat .= '. ';
+                                            if ($ket == 1) {
+                                                $izin = 0;
                                             } else {
-                                                $kalimat .= ' dkk. ';
+                                                $izin = 1;
+                                                array_push($a, $ft->judul);
                                             }
-                                            $kalimat .= $ft->tahun;
-                                            $kalimat .= '. ';
-                                            $kalimat .= $ft->judul;
-                                            $kalimat .= '. ';
-                                            $kalimat .= $ft->kota;
-                                            $kalimat .= ': ';
-                                            $kalimat .= $ft->sumber;
-                                            $kalimat .= '.';
                                         }
                                     }
-                                    if (isset($kalimat)) {
+
+                                    if ($izin == 1) {
+                                        $kal = $ft->penulis_1;
+                                        $kali = explode(' ', $kal);
+                                        $lika = end($kali);
+                                        $kalimat = $lika;
+                                        $kalimat .= ', ';
+                                        foreach ($kali as $kila) {
+                                            if ($kila == $lika) {
+                                            } else {
+                                                $kalimat .= ' ';
+                                                $kalimat .= $kila;
+                                            }
+                                        }
+                                        if ($ft->jumlah_penulis == 3) {
+                                            $kalimat .= ', ';
+                                            $kalimat .= $ft->penulis_2;
+                                            $kalimat .= ', dan ';
+                                            $kalimat .= $ft->penulis_3;
+                                            $kalimat .= '. ';
+                                        } elseif ($ft->jumlah_penulis == 2) {
+                                            $kalimat .= ', ';
+                                            $kalimat .= $ft->penulis_2;
+                                            $kalimat .= '. ';
+                                        } elseif ($ft->jumlah_penulis == 1) {
+                                            $kalimat .= '. ';
+                                        } else {
+                                            $kalimat .= ' dkk. ';
+                                        }
+                                        $kalimat .= $ft->tahun;
+                                        $kalimat .= '. ';
+                                        $kalimat .= $ft->judul;
+                                        $kalimat .= '. ';
+                                        $kalimat .= $ft->kota;
+                                        $kalimat .= ': ';
+                                        $kalimat .= $ft->sumber;
+                                        $kalimat .= '.';
                                         echo $kalimat . '<br/> <br/>';
-                                    } else {
                                     }
                                 } elseif ($ft->jenis == 2) {
-                                    // $queryy = 'SELECT * FROM `dapus_tabel`';
-                                    // $datapus = mysqli_query($host, $queryy);
-                                    // while ($datapusta = mysqli_fetch_array($datapus)) {
-                                    //     if (str_contains($ft->judul_web, $datapusta[1])) {
-                                    //     } else {
-                                    // $query = "INSERT INTO `dapus_tabel` (`id`, `judul_dapus`, `created_at`, `updated_at`) VALUES (NULL, '$ft->judul_web', NULL, NULL);";
-                                    // mysqli_query($host, $query);
                                     $kal = $ft->judul_web;
                                     $kali = explode(' ', $kal);
                                     $lika = end($kali);
@@ -549,8 +554,7 @@
                                     $kalimat .= '. ';
                                     echo $kalimat . '<br/> <br/>';
                                 }
-                                //     }
-                                // }
+
                                 ?>
                             @endforeach
                         </div>
