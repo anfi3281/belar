@@ -489,13 +489,14 @@
                                             }
                                             if ($ket == 1) {
                                                 $izin = 0;
+                                                array_push($a, "hy");
                                             } else {
                                                 $izin = 1;
                                                 array_push($a, $ft->judul);
                                             }
                                         }
                                     }
-                                
+
                                     if ($izin == 1) {
                                         $kal = $ft->penulis_1;
                                         $kali = explode(' ', $kal);
@@ -535,26 +536,53 @@
                                         echo $kalimat . '<br/> <br/>';
                                     }
                                 } elseif ($ft->jenis == 2) {
-                                    $kal = $ft->judul_web;
-                                    $kali = explode(' ', $kal);
-                                    $lika = end($kali);
-                                    $kalimat = $lika;
-                                    $kalimat .= ', ';
-                                    foreach ($kali as $kila) {
-                                        if ($kila == $lika) {
+                                    for ($y = 1; $y <= $ft->id; $y++) {
+                                        if (isset($a[$y])) {
+                                            if ($ft->judul_web == $a[$y]) {
+                                                $izin = 0;
+                                            } else {
+                                                // $izin = 1;
+                                                // $ket = 1;
+                                            }
                                         } else {
-                                            $kalimat .= ' ';
-                                            $kalimat .= $kila;
+                                            for ($t = 1; $t <= $ft->id; $t++) {
+                                                if (isset($a[$t])) {
+                                                    if ($ft->judul_web == $a[$t]) {
+                                                        $ket = 1;
+                                                    }
+                                                }
+                                            }
+                                            if ($ket == 1) {
+                                                $izin = 0;
+                                                array_push($a, "hy");
+                                            } else {
+                                                $izin = 1;
+                                                array_push($a, $ft->judul_web);
+                                            }
                                         }
                                     }
-                                    $kalimat .= '. ';
-                                    $kalimat .= $ft->link_web;
-                                    $kalimat .= ', diakses pada ';
-                                    $kalimat .= $ft->tanggal_diakses_web;
-                                    $kalimat .= '. ';
-                                    echo $kalimat . '<br/> <br/>';
+
+                                    if ($izin == 1) {
+                                        $kal = $ft->judul_web;
+                                        $kali = explode(' ', $kal);
+                                        $lika = end($kali);
+                                        $kalimata = $lika;
+                                        $kalimata .= ', ';
+                                        foreach ($kali as $kila) {
+                                            if ($kila == $lika) {
+                                            } else {
+                                                $kalimata .= ' ';
+                                                $kalimata .= $kila;
+                                            }
+                                        }
+                                        $kalimata .= '. ';
+                                        $kalimata .= $ft->link_web;
+                                        $kalimata .= ', diakses pada ';
+                                        $kalimata .= $ft->tanggal_diakses_web;
+                                        $kalimata .= '. ';
+                                        echo $kalimata . '<br/> <br/>';
+                                    }
                                 }
-                                
                                 ?>
                             @endforeach
                         </div>
