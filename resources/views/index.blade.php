@@ -439,7 +439,7 @@
                                     $kalimat .= $ft->tahun_web;
                                     $kalimat .= ', ';
                                     $kalimat .= $ft->link_web;
-                                    $kalimat .= '. ';
+                                    $kalimat .= '. Diakses pada ';
                                     $kalimat .= $ft->tanggal_diakses_web;
                                     $kalimat .= '.';
                                 }
@@ -495,7 +495,7 @@
                                             }
                                         }
                                     }
-
+                                
                                     if ($izin == 1) {
                                         $kal = $ft->penulis_1;
                                         $kali = explode(' ', $kal);
@@ -554,7 +554,7 @@
                                     $kalimat .= '. ';
                                     echo $kalimat . '<br/> <br/>';
                                 }
-
+                                
                                 ?>
                             @endforeach
                         </div>
