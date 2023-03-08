@@ -538,7 +538,7 @@
                                 } elseif ($ft->jenis == 2) {
                                     for ($y = 1; $y <= $ft->id; $y++) {
                                         if (isset($a[$y])) {
-                                            if ($ft->judul_web == $a[$y]) {
+                                            if ($ft->deskripsi_web == $a[$y]) {
                                                 $izin = 0;
                                             } else {
                                                 // $izin = 1;
@@ -547,7 +547,7 @@
                                         } else {
                                             for ($t = 1; $t <= $ft->id; $t++) {
                                                 if (isset($a[$t])) {
-                                                    if ($ft->judul_web == $a[$t]) {
+                                                    if ($ft->deskripsi_web == $a[$t]) {
                                                         $ket = 1;
                                                     }
                                                 }
@@ -557,7 +557,7 @@
                                                 array_push($a, "hy");
                                             } else {
                                                 $izin = 1;
-                                                array_push($a, $ft->judul_web);
+                                                array_push($a, $ft->deskripsi_web);
                                             }
                                         }
                                     }
