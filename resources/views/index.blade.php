@@ -367,6 +367,10 @@
                             </form>
                         </div>
                     </div>
+                    <div class="col-lg-7">
+
+                        {{ $data->links() }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -489,14 +493,14 @@
                                             }
                                             if ($ket == 1) {
                                                 $izin = 0;
-                                                array_push($a, "hy");
+                                                array_push($a, 'hy');
                                             } else {
                                                 $izin = 1;
                                                 array_push($a, $ft->judul);
                                             }
                                         }
                                     }
-
+                                
                                     if ($izin == 1) {
                                         $kal = $ft->penulis_1;
                                         $kali = explode(' ', $kal);
@@ -554,14 +558,14 @@
                                             }
                                             if ($ket == 1) {
                                                 $izin = 0;
-                                                array_push($a, "hy");
+                                                array_push($a, 'hy');
                                             } else {
                                                 $izin = 1;
                                                 array_push($a, $ft->deskripsi_web);
                                             }
                                         }
                                     }
-
+                                
                                     if ($izin == 1) {
                                         $kal = $ft->judul_web;
                                         $kali = explode(' ', $kal);
