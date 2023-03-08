@@ -25,7 +25,7 @@ class FootnoteController extends Controller
         $nomo = $nom->id + 1;
         $apakahedit = 0;
         $dapus = 1;
-        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'data' => $data, 'nomor' => $nomo, 'apakahedit' => $apakahedit, 'dapus' => $dapus]);
+        return view('index', ['jenis' => $jenis, 'jumlahpenulis' => $jumlahpenulis, 'dataa' => $data, 'nomor' => $nomo, 'apakahedit' => $apakahedit, 'dapus' => $dapus]);
     }
     public function hapus($ft){
         DB::table('footnote')->where('id', $ft)->delete();

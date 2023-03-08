@@ -367,9 +367,10 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-
-                        {{ $data->links() }}
+                    <div class="pb-0 text-center col-lg-7">
+                        @if (isset($data))
+                            {{ $data->links() }}
+                        @endif
                     </div>
                 </div>
             </div>
@@ -470,7 +471,7 @@
                             <?php
                             $a = ['hy'];
                             ?>
-                            @foreach ($data as $ft)
+                            @foreach ($dataa as $ft)
                                 <?php
                                 $izin = 0;
                                 $ket = 0;
@@ -500,7 +501,7 @@
                                             }
                                         }
                                     }
-                                
+
                                     if ($izin == 1) {
                                         $kal = $ft->penulis_1;
                                         $kali = explode(' ', $kal);
@@ -565,7 +566,7 @@
                                             }
                                         }
                                     }
-                                
+
                                     if ($izin == 1) {
                                         $kal = $ft->judul_web;
                                         $kali = explode(' ', $kal);
